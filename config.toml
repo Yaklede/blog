@@ -17,7 +17,7 @@ disqusShortname = 'yaklog'
 
 [Params.Comments]
 enabled = true
-provider = 'disqus'
+provider = 'utterances'
 
 [Params.Sidebar]
 subtitle = '기록용 블로그'
