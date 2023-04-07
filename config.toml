@@ -20,6 +20,7 @@ enabled = true
 provider = 'disqus'
 
 [Params.Sidebar]
+subtitle = '기록용 블로그'
 avatar.enabled = true
 avatar.local = true
 avatar.src = "img/pig.jpeg"
