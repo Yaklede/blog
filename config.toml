@@ -1,4 +1,44 @@
+
+[[module.imports]]
+path = "github.com/CaiJimmy/hugo-theme-stack/v3"
+
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'ananke'
+title = 'myBlog'
+theme = 'stack'
+
+[Params]
+mainSections = ['post']
+author = 'jimin'
+favicon = '/favicon.ico'
+enable_widgets = true
+disqusShortname = 'yaklog'
+
+
+[Params.Comments]
+enabled = true
+provider = 'disqus'
+
+[Params.Sidebar]
+avatar.enabled = true
+avatar.local = true
+avatar.src = "img/pig.jpeg"
+
+[[Params.widgets.homepage]]
+type = 'search'
+
+[[Params.widgets.homepage]]
+type = 'archives'
+params.limit = 10
+
+[[Params.widgets.homepage]]
+type = 'categories'
+params.limit = 10
+
+[[Params.widgets.homepage]]
+type = 'tag-cloud'
+params.limit = 10
+
+[[Params.widgets.page]]
+type = 'toc'
+
