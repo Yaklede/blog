@@ -3,7 +3,7 @@ title: '마크다운 문법을 학습을 위한 포스팅'
 date: 2023-04-05T10:09:30+09:00
 categories: ['study']
 tags: ['markdown', 'hugo']
-series: ["Themes Guide"]
+series: ["study"]
 draft: true
 ---
 

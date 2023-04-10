@@ -14,6 +14,9 @@ favicon = '/favicon.ico'
 enable_widgets = true
 disqusShortname = 'yaklog'
 
+[Params.opengraph]
+site = 'naem'
+
 
 [Params.Comments]
 enabled = true
@@ -23,7 +26,8 @@ provider = 'utterances'
 subtitle = '기록용 블로그'
 avatar.enabled = true
 avatar.local = true
-avatar.src = "img/pig.jpeg"
+avatar.src = "img/mypig.jpg"
+
 
 [[Params.widgets.homepage]]
 type = 'search'
@@ -42,4 +46,6 @@ params.limit = 10
 
 [[Params.widgets.page]]
 type = 'toc'
+
+
 
