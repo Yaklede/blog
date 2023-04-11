@@ -1,5 +1,5 @@
 ---
-title: "Spring Security 기본 설정"
+title: "Spring Security 기본 API 및 Filter"
 description: spring boot 3.x 기반 기본 설정
 date: 2023-04-10T23:00:15+09:00
 image: 
@@ -12,7 +12,7 @@ draft: true
 # Spring Security 사용자 정의 보안 기능
 
 ## 시작하기전에 Config 설정하기
-### spring boot 3.0 부터 spring security 설정이 바뀌었습니다.
+### spring boot 2.7 부터 spring security 설정이 바뀌었습니다.
 기존 spring boot 2.x 버전에서는 
 ```kotlin
 @Configuration
@@ -81,5 +81,62 @@ Config class를 하나 정의하고 SecurityFilterChain을 반환 하는 bean을
 ### HttpSecurity
 - 사용자의 세부적인 보안 기능 설정
 - 인증 및 인가와 관련된 다양한 API 제공
+
+### Form 인증 방식
+spring security에서 기본으로 사용하는 방식이며 우리가 아는 form형식에서 데이터를 받아와서 검증한다
+
+```kotlin
+class SuccessDefaultHandler() : AuthenticationSuccessHandler {
+            override fun onAuthenticationSuccess(
+                request: HttpServletRequest,
+                response: HttpServletResponse,
+                authentication: Authentication
+            ) {
+                println("authentication ${authentication.name}")
+                response.sendRedirect("/")
+            }
+        }
+```
+로그인 성공시 거치는 Default Handler
+```kotlin
+class FailDefaultHandler() : AuthenticationFailureHandler {
+    override fun onAuthenticationFailure(
+        request: HttpServletRequest,
+        response: HttpServletResponse,
+        exception: AuthenticationException
+    ) {
+        println("authentication Fail")
+        response.sendRedirect("/login")
+    }
+}
+```
+로그인 실패시 거치는 Fail Handler
+
+```kotlin
+fun configurer(http: HttpSecurity): SecurityFilterChain {
+        //인가 정책
+        http
+            .authorizeHttpRequests()
+            .anyRequest().authenticated() // 모든 요청에 대해서 인증 정책
+
+        //인증 정책 default form 인증
+        http
+            .formLogin() //form 로그인 인증 정책
+            .defaultSuccessUrl("/") // 로그인 인증 성공 후 redirect Url
+            .failureForwardUrl("/login") // 로그인 인증 실패 redirect Url
+            .usernameParameter("username") // form LoginId parameter 지정
+            .passwordParameter("password") // form Password parameter 지정
+            .loginProcessingUrl("/login_proc") // form action url
+            .successHandler(SuccessDefaultHandler()) // 로그인 인증 성공시 거치는 필터
+            .failureHandler(FailDefaultHandler()) // 로그인 실패시 거치는 필터
+            .permitAll() //인증이 되어 있지 않아도 접근이 가능함
+
+        return http.orBuild
+    }
+```
+위와 같이 설정 해줄 수 있다.
+
+### 
+
 
 
