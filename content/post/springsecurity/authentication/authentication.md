@@ -175,7 +175,7 @@ public interface Authentication extends Principal, Serializable {
 1. 사용자가 로그인 요청을 form형식으로 전송
     - ![img_1.png](img_1.png)
     - FilterChainProxy 클래스에 dofilter 메소드에 요청이 전달된다.
-    - 해당 메소드에서 doFilterInternal를 호출한다
+    - 해당 메소드에서 doFilterInternal를 호출한다.
     - ![img_2.png](img_2.png)
     - doFilterInternal에서 우리가 설정했던 filter들을 가져와서 순차적으로 검증에 들어간다.
     - 디버그를 찍어보면 우리가 설정했던 config설정에 따라 16개의 필터가 등록되어 있는걸 확인 할 수 있다
@@ -183,7 +183,7 @@ public interface Authentication extends Principal, Serializable {
 2. 해당 Request정보를 UsernamePasswordAuthenticationFilter 이동
     - ![img_4.png](img_4.png)
 3. 해당 필터에서 request를 이용하여 Authentication을 생성
-    - setDetilas를 이용하여 authReqeust에 Authenticaton을 생성한다
+    - setDetilas를 이용하여 authReqeust에 Authenticaton을 생성한다.
 4. AuthenticationManager를 통해 인증 위임
     - return에 보면 this.getAuthenticationManager().authenticate(authRequest) 부분을 호출하고 있는데 이 부분이 manger에게 인증을 위임하는 부분이다.
 5. AuthenticationManager를 통해 인증에 성공하면 인증에 성공된 형태의 Authentication을 반환후 ThreadLocal에 SecurityContextHolder > SecurityContext > Authentication객체를 저장
