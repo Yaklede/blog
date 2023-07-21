@@ -12,7 +12,7 @@ draft: true
 
 # SecurityContextHolder, SecurityContext
 
-## SecurityContextHolder
+## SecurityContext
 
 - Authentication 객체가 저장되는 보관소로 필요 시 언제든지 Authentication 객체를 꺼내어 쓸 수 있도록 제공되는 클래스이다
 - ThreadLocal에 저장되어 아무 곳에서나 참조가 가능할 수 있다.
