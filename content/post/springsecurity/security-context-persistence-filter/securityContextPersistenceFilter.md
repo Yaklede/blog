@@ -36,7 +36,7 @@ draft: true
 
 ## 동작
 ![img.png](img.png)
-1. Request요청이 들어오고 SecurityContextPersistenceFilter에 진입한다.
+1. Request요청이 들어오고 SecurityContextHolderFilter(SecurityContextPersistenceFilter)에 진입한다.
 2. HttpSecurityContextRepository를 통해 인증이 되었는지 검증한다.
    * ![img_1.png](img_1.png)
    * SessionManagementFilter에서 인증되었는지 확인
