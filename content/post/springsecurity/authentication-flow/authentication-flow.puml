@@ -1,0 +1,22 @@
+@startuml
+actor Client as user
+control UsernamePasswordAuthenticationFilter as filter
+control AuthenticationManager as manager
+control AuthenticationProvider as provide
+control UserDetailsService as service
+database Repository as repo
+
+
+user -> filter : Request Login
+filter -> manager : Authentication (id + pass)
+filter -> manager : authenticate(Authentication)
+manager -> provide : authenticate(Authentication)
+provide -> service : loadUserByUsername(username)
+service -> repo : findByUsername(username)
+
+repo -> service : User
+service -> provide : UserDetails
+provide -> manager : Authentication(UserDetails + authorities)
+manager -> filter : Authentication
+filter -> user : SecurityContext에 인증객체 저장
+@enduml
