@@ -29,7 +29,12 @@ draft: true
    ![img_4.png](img_4.png)
 6. 인증 절차가 끝나면 해당 요청에 맞는 UserDetails 객체를 반환한다.
 7. 반환 받은 UserDetails 정보와 authorities를 가지고 인증 된 AuthenticationToken을 생성
-8. 생성된 token 정보를 SuccessHandler로 보내 인증 완료 처리
+8. 생성된 token 정보를 SecurityContext에 저장
+   ![img_8.png](img_8.png)
+9. 저장된 SecurityContext를 Session정보에 저장 후 SuccessHandler 호출
+   ![img_9.png](img_9.png)
+   ![img_7.png](img_7.png)
+10. 생성된 token 정보를 SuccessHandler로 보내 인증 완료 처리
     ![img_6.png](img_6.png)
 
 
