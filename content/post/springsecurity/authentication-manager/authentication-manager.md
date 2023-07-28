@@ -14,7 +14,7 @@ draft: true
 ## 동작
 ![img.png](img.png)
 
-1. 사용자가 로그인 요청을 보냈을 시 Form, RememberMe, Oauth등 인증들이 ProviderManager로 이동한다.
+1. 사용자가 로그인 요청을 보냈을 시 Form, RememberMe, Oauth2등 인증들이 ProviderManager로 이동한다.
 2. ProviderManager는 받은 요청을 처리 할 수 있는 Provider 찾고 나서 해당 요청을 처리 할 수 있는 Provider로 인증을 위임한다.
     ![img_1.png](img_1.png)
    - 기본적으로 spring에서 제공해주는 provider에는 AnonymousAuthenticationProvider와 RememberMeAuthenticatoinProvider가 제공된다
